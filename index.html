@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山田太郎 | Web Designer Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN for standalone usage) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Configuration for Custom Colors -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        main: '#2C3E50',    /* Dark Blue */
+                        accent: '#E74C3C',  /* Red */
+                        bgLight: '#ECF0F1', /* Light Gray */
+                        bgDark: '#1a252f',  /* Even darker for dark mode bg */
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        heading: ['"Poppins"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Animation Classes */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+        
+        /* Hero Pattern Overlay */
+        .hero-pattern {
+            background-color: #2C3E50;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2334495e' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-bgLight text-main transition-colors duration-300 dark:bg-bgDark dark:text-gray-100">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 dark:bg-main/90 backdrop-blur-sm shadow-sm transition-colors duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-heading text-2xl font-bold tracking-wider text-main dark:text-white">
+                Taro<span class="text-accent">.Design</span>
+            </a>
+            
+            <div class="flex items-center gap-6">
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none">
+                    <i class="fas fa-moon text-main dark:text-yellow-300 text-xl" id="theme-icon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <header class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden hero-pattern">
+        <!-- Overlay Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-main/90 to-main/70 mix-blend-multiply"></div>
+        
+        <div class="container mx-auto px-6 relative z-10 text-center text-white">
+            <h1 class="font-heading text-5xl md:text-7xl font-bold mb-6 tracking-tight fade-in-section">
+                Colors Logic,<br>
+                <span class="text-accent">Designs Magic.</span>
+            </h1>
+            <p class="text-lg md:text-xl font-light max-w-2xl mx-auto mb-10 leading-relaxed fade-in-section" style="transition-delay: 200ms;">
+                色彩検定1級の知識と確かなコーディング技術で、<br class="hidden md:block">企業の想いを「伝わる」形に。
+            </p>
+            <div class="fade-in-section" style="transition-delay: 400ms;">
+                <a href="#contact" class="inline-block bg-accent hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full transition-transform hover:scale-105 shadow-lg">
+                    お問い合わせ
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-2xl"></i>
+        </div>
+    </header>
+
+    <!-- 2. About Section -->
+    <section id="about" class="py-24 bg-white dark:bg-main transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- Profile Image -->
+                <div class="w-full md:w-1/3 flex justify-center fade-in-section">
+                    <div class="relative w-64 h-64 md:w-72 md:h-72">
+                        <div class="absolute inset-0 bg-accent rounded-full opacity-20 transform translate-x-3 translate-y-3"></div>
+                        <!-- Placeholder for Illustration -->
+                        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Taro&clothing=blazer&backgroundColor=ecf0f1" 
+                             alt="Webデザイナー 山田太郎" 
+                             class="relative w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-700 shadow-xl bg-gray-100">
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="w-full md:w-2/3 fade-in-section" style="transition-delay: 200ms;">
+                    <h2 class="font-heading text-4xl font-bold mb-6 text-main dark:text-white relative inline-block">
+                        Who I Am
+                        <span class="absolute bottom-1 left-0 w-1/2 h-1 bg-accent rounded"></span>
+                    </h2>
+                    <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
+                        はじめまして、Webデザイナーの山田太郎です。<br>
+                        都内の制作会社で3年間、企業のコーポレートサイトや商品LP（ランディングページ）の制作に従事し、現在はフリーランスとして活動しています。
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-8">
+                        私の強みは、ただ綺麗なだけでなく、<span class="font-bold text-main dark:text-white bg-accent/10 px-1">色彩心理学に基づいた配色設計</span>が得意なことです。『信頼感を与える青』『購買意欲をそそる赤』など、目的に合わせた色使いでビジネスの課題解決をサポートします。
+                    </p>
+                    
+                    <div class="flex items-center gap-3 text-sm font-bold text-accent tracking-wide uppercase">
+                        <i class="fas fa-heart"></i>
+                        <span>趣味: 街中の看板の配色分析、カフェ巡り</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Contact Section -->
+    <section id="contact" class="py-24 bg-bgLight dark:bg-bgDark transition-colors duration-300">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="text-center mb-12 fade-in-section">
+                <h2 class="font-heading text-4xl font-bold mb-4 text-main dark:text-white">Get In Touch</h2>
+                <p class="text-gray-600 dark:text-gray-400">
+                    制作のご依頼、お見積もり、その他ご相談はお気軽にお問い合わせください。<br>
+                    通常2営業日以内に返信いたします。
+                </p>
+            </div>
+
+            <div class="bg-white dark:bg-main p-8 md:p-10 rounded-2xl shadow-lg fade-in-section" style="transition-delay: 200ms;">
+                <form class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">お名前</label>
+                        <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all" placeholder="山田 太郎">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">メールアドレス</label>
+                        <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all" placeholder="your@email.com">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">お問い合わせ内容</label>
+                        <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all" placeholder="ご用件をご記入ください"></textarea>
+                    </div>
+                    <button type="button" class="w-full bg-main hover:bg-gray-700 dark:bg-accent dark:hover:bg-red-600 text-white font-bold py-4 rounded-lg transition-all shadow-md transform hover:-translate-y-1">
+                        送信する
+                    </button>
+                </form>
+
+                <!-- SNS Links -->
+                <div class="mt-10 pt-6 border-t border-gray-100 dark:border-gray-700 flex justify-center gap-8">
+                    <a href="#" class="flex flex-col items-center gap-2 group">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 group-hover:bg-black group-hover:text-white transition-all text-gray-600 dark:text-gray-300">
+                            <i class="fa-brands fa-x-twitter text-xl"></i>
+                        </div>
+                        <span class="text-xs font-bold text-gray-500 dark:text-gray-400">X (Twitter)</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center gap-2 group">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 group-hover:bg-pink-600 group-hover:text-white transition-all text-gray-600 dark:text-gray-300">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </div>
+                        <span class="text-xs font-bold text-gray-500 dark:text-gray-400">Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-main text-white py-8 text-center text-sm">
+        <p>&copy; 2024 Taro Yamada. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        // 1. Dark Mode Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        // Check Local Storage or System Preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            
+            if (html.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                localStorage.theme = 'light';
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+
+        // 2. Scroll Animation (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Animate only once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
